@@ -1,17 +1,17 @@
-import { Profile } from '../models/profile.model';
-import { SkillCategory } from '../models/skill.model';
-import { Project } from '../models/project.model';
-import { Experience, Education } from '../models/experience.model';
-import { Testimonial } from '../models/testimonial.model';
-import { Certification } from '../models/certification.model';
-import { Service } from '../models/service.model';
+import { Profile } from '../modals/profile.model';
+import { SkillCategory } from '../modals/skill.model';
+import { Project } from '../modals/project.model';
+import { Experience, Education } from '../modals/experience.model';
+import { Testimonial } from '../modals/testimonial.model';
+import { Certification } from '../modals/certification.model';
+import { Service } from '../modals/service.model';
 
 export const PROFILE: Profile = {
   name: 'Bangar Mahammed Ghouse',
   title: '.NET Full Stack Developer',
   tagline: 'Building scalable enterprise applications with Angular, ASP.NET & SQL Server.',
-  location: 'Bangalore, India',
-  email: 'mahammedghouse@example.com', // Update with your real email
+  location: 'Hyderabad, India',
+  email: 'mdghouse23102@gmail.com', // Update with your real email
   avatar: '/assets/images/avatar.jpg',
   resumeUrl: '/assets/documents/resume.pdf',
   github: 'https://github.com/MDGHOUSE18',
