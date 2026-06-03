@@ -1,12 +1,12 @@
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   height: var(--header-height);
   z-index: 1000;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
+  flex-shrink: 0;
   &.scrolled {
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(20px);
@@ -93,12 +93,13 @@
   text-decoration: none;
   transition: color 0.3s;
 
-  &:hover, &.active {
+  &:hover,
+  &.active {
     color: var(--color-text-primary);
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -108,7 +109,8 @@
     transition: width 0.3s;
   }
 
-  &:hover::after, &.active::after {
+  &:hover::after,
+  &.active::after {
     width: 100%;
   }
 }
@@ -214,7 +216,8 @@
   color: var(--color-text-secondary);
   transition: color 0.3s;
 
-  &:hover, &.active {
+  &:hover,
+  &.active {
     color: var(--color-text-primary);
   }
 
