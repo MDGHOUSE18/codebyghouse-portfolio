@@ -119,6 +119,29 @@ export const PROJECTS: Project[] = [
     status: 'completed'
   },
   {
+    id: 'codebyghouse-portfolio',
+    title: 'CodeByGhouse Portfolio',
+    description: 'Modern responsive developer portfolio showcasing projects, skills, experience, and services.',
+    longDescription: 'A premium personal portfolio website built with Angular featuring smooth animations, responsive layouts, reusable components, dark/light theme support, project showcases, certifications, testimonials, and contact integration. Designed to present full-stack development expertise with modern UI/UX practices.',
+    image: '/assets/images/projects/codebyghouse-portfolio.jpg',
+    technologies: ['Angular', 'TypeScript', 'HTML5', 'SCSS', 'Bootstrap', 'Netlify'],
+    category: 'frontend',
+    githubUrl: 'https://github.com/MDGHOUSE18/codebyghouse-portfolio',
+    liveUrl: 'https://ghouse-dev.netlify.app/',
+    featured: true,
+    year: 2026,
+    role: 'Frontend Developer',
+    highlights: [
+      'Built a modern responsive portfolio with Angular',
+      'Implemented reusable standalone components and modular architecture',
+      'Added dark/light theme support and smooth UI animations',
+      'Designed premium UI/UX optimized for recruiters and freelance clients',
+      'Integrated project showcase, certifications, skills, and contact sections',
+      'Deployed production-ready application on Netlify'
+    ],
+    status: 'completed'
+  },
+  {
     id: 'bookstore-webapp',
     title: 'Bookstore Web Application',
     description: 'Full-stack bookstore system with books, cart, wishlist, orders, feedback, users, and JWT auth.',
