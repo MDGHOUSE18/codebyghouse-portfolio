@@ -13,8 +13,7 @@ import gsap from 'gsap';
   imports: [
     RouterLink,
     MarqueeTextComponent,
-    MagneticButtonComponent,
-    AnimatedCounterComponent
+    MagneticButtonComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
