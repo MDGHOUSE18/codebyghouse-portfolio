@@ -1,0 +1,122 @@
+<section class="contact-section">
+  <div class="container">
+    <app-section-header 
+      label="Get In Touch"
+      [titleLines]="contactTitleLines"
+      [accentLine]="1"
+      description="Have a project in mind? Let's discuss how I can help bring your vision to life."
+    />
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">✉️</div>
+          <div class="info-content">
+            <h4 class="info-label">Email</h4>
+            <a [href]="'mailto:' + PROFILE.email" class="info-value">{{ PROFILE.email }}</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div class="info-content">
+            <h4 class="info-label">Location</h4>
+            <p class="info-value">{{ PROFILE.location }}</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">💼</div>
+          <div class="info-content">
+            <h4 class="info-label">Availability</h4>
+            <p class="info-value status-available">Open for opportunities</p>
+          </div>
+        </div>
+
+        <div class="social-section">
+          <h4 class="social-title">Connect With Me</h4>
+          <div class="social-links">
+            @for (link of SOCIAL_LINKS; track link.name) {
+              <a [href]="link.url" target="_blank" rel="noopener" class="social-link">
+                <span class="social-icon">{{ getSocialIcon(link.icon) }}</span>
+                <span class="social-name">{{ link.name }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form class="contact-form" (ngSubmit)="submitForm()" #form="ngForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name"
+                [(ngModel)]="formData.name" 
+                required
+                placeholder="John Doe"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email"
+                [(ngModel)]="formData.email" 
+                required
+                placeholder="john@example.com"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject"
+              [(ngModel)]="formData.subject" 
+              required
+              placeholder="Project Inquiry"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message" 
+              name="message"
+              [(ngModel)]="formData.message" 
+              required
+              rows="6"
+              placeholder="Tell me about your project..."
+            ></textarea>
+          </div>
+
+          <app-magnetic-button variant="primary">
+            Send Message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </app-magnetic-button>
+
+          @if (submitStatus() === 'success') {
+            <div class="form-status success">
+              ✓ Message sent successfully! I'll get back to you soon.
+            </div>
+          }
+          @if (submitStatus() === 'error') {
+            <div class="form-status error">
+              ✗ Failed to send message. Please try again.
+            </div>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

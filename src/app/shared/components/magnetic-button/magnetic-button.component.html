@@ -1,0 +1,6 @@
+<button #btn class="magnetic-btn" [class.primary]="variant() === 'primary'" 
+        [class.outline]="variant() === 'outline'" [class.ghost]="variant() === 'ghost'">
+  <span class="btn-content">
+    <ng-content></ng-content>
+  </span>
+</button>

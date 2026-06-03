@@ -1,0 +1,101 @@
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="grid-overlay"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+      </div>
+      
+      <div class="hero-container">
+        <div class="hero-content" #heroContent>
+          <div class="hero-status">
+            <span class="status-indicator"></span>
+            <span class="status-text">Available for new projects</span>
+          </div>
+          
+          <h1 class="hero-title">
+  <span class="title-line line-1">Hi, I'm Ghouse</span>
+  <span class="title-line line-2 gradient-text">.NET Full Stack</span>
+  <span class="title-line line-3">Developer</span>
+</h1>
+          
+          <p class="hero-description">
+            {{ PROFILE.bio }}
+          </p>
+          
+          <div class="hero-actions">
+            <app-magnetic-button variant="primary" routerLink="/projects">
+              View My Work
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </app-magnetic-button>
+            
+            <app-magnetic-button variant="outline" routerLink="/contact">
+              Let's Talk
+            </app-magnetic-button>
+          </div>
+          
+          <div class="hero-socials">
+            @for (link of SOCIAL_LINKS; track link.name) {
+              <a [href]="link.url" target="_blank" rel="noopener" class="social-link" [attr.aria-label]="link.name">
+                <span class="social-icon">{{ getSocialIcon(link.icon) }}</span>
+              </a>
+            }
+          </div>
+        </div>
+        
+        <div class="hero-visual" #heroVisual>
+          <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <div class="avatar-image">
+              <div class="avatar-initials">G</div>
+            </div>
+            <div class="floating-badge badge-1">
+  <span class="badge-icon">⚡</span>
+  <span class="badge-text">Angular</span>
+</div>
+<div class="floating-badge badge-2">
+  <span class="badge-icon">🚀</span>
+  <span class="badge-text">ASP.NET</span>
+</div>
+<div class="floating-badge badge-3">
+  <span class="badge-icon">🗄️</span>
+  <span class="badge-text">SQL Server</span>
+</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span class="scroll-text">Scroll</span>
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+    
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <app-animated-counter [target]="PROFILE.yearsOfExperience" suffix="+" />
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <app-animated-counter [target]="PROFILE.projectsCompleted" suffix="+" />
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item">
+            <app-animated-counter [target]="PROFILE.happyClients" suffix="+" />
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-item">
+            <app-animated-counter [target]="PROFILE.certificationsCount" suffix="+" />
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="marquee-section">
+      <app-marquee-text [items]="MARQUEE_SKILLS" />
+      <app-marquee-text [items]="MARQUEE_SKILLS.slice().reverse()" [reverse]="true" />
+    </section>

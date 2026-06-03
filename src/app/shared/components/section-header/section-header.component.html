@@ -1,0 +1,18 @@
+<div class="section-header">
+  @if (label()) {
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">{{ label() }}</span>
+    </div>
+  }
+  <h2 class="section-title">
+    @for (line of titleLines(); track line; let i = $index) {
+      <span class="title-line" [class.accent]="i === accentLine()">
+        {{ line }}
+      </span>
+    }
+  </h2>
+  @if (description()) {
+    <p class="section-description">{{ description() }}</p>
+  }
+</div>

@@ -1,0 +1,19 @@
+:host {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-5xl);
+  line-height: 1;
+  color: var(--color-text-primary);
+
+  @media (max-width: 768px) {
+    font-size: var(--text-4xl);
+  }
+}
+
+.counter-suffix {
+  font-size: 0.6em;
+  color: var(--color-accent);
+  margin-left: 0.1em;
+}

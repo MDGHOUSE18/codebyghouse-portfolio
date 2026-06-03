@@ -1,0 +1,47 @@
+<section class="services-section">
+  <div class="container">
+    <app-section-header 
+      label="Services"
+      [titleLines]="['What I Can Do', 'For You']"
+      [accentLine]="1"
+      description="Comprehensive development services tailored to bring your ideas to life with modern technologies."
+    />
+
+    <div class="services-grid">
+      @for (service of SERVICES; track service.id; let i = $index) {
+        <div class="service-card" [class.popular]="service.popular"
+             [style.animation-delay]="(i * 0.1) + 's'">
+          @if (service.popular) {
+            <div class="popular-badge">Most Popular</div>
+          }
+
+          <div class="service-icon">{{ getServiceIcon(service.icon) }}</div>
+
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+
+          <ul class="service-features">
+            @for (feature of service.features; track feature) {
+              <li>
+                <span class="check-icon">✓</span>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+
+          <div class="service-footer">
+            <div class="service-meta">
+              <span class="service-price">{{ service.price }}</span>
+              @if (service.duration) {
+                <span class="service-duration">{{ service.duration }}</span>
+              }
+            </div>
+            <a routerLink="/contact" class="service-cta">
+              Get Started →
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

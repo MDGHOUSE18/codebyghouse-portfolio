@@ -1,0 +1,33 @@
+.experience-section { padding: 6rem 0; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+.experience-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; }
+@media (max-width: 1024px) {
+  .experience-section { padding: 4.5rem 0; }
+  .experience-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .experience-section { padding: 3rem 0; }
+  .experience-grid { gap: 2rem; }
+}
+.column-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.exp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.5rem; transition: all 0.3s; }
+.exp-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+.exp-card.current { border-color: rgba(201, 255, 87, 0.3); }
+.exp-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+.exp-period { font-family: monospace; font-size: 0.8125rem; color: #c9ff57; }
+.current-badge { padding: 0.25rem 0.75rem; background: rgba(201, 255, 87, 0.1); border: 1px solid rgba(201, 255, 87, 0.2); border-radius: 9999px; font-size: 0.6875rem; font-weight: 600; color: #c9ff57; }
+.exp-position { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
+.exp-company { font-size: 0.9375rem; color: #a0a0a0; margin-bottom: 0.75rem; }
+.exp-description { font-size: 0.9375rem; line-height: 1.6; color: #a0a0a0; margin-bottom: 1rem; }
+.exp-responsibilities { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+.exp-responsibilities li { position: relative; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6; color: #a0a0a0; margin-bottom: 0.5rem; }
+.exp-responsibilities li::before { content: '▹'; position: absolute; left: 0; color: #c9ff57; }
+.exp-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-tag { padding: 0.25rem 0.75rem; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 0.75rem; color: #a0a0a0; }
+@media (max-width: 640px) {
+  .column-title { font-size: 1.25rem; margin-bottom: 1.25rem; }
+  .exp-card { padding: 1.25rem; margin-bottom: 1rem; }
+  .exp-card:hover { transform: none; }
+  .exp-header { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+  .exp-position { font-size: 1.125rem; }
+}

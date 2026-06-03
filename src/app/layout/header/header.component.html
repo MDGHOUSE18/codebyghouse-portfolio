@@ -1,0 +1,49 @@
+<header class="header" 
+        [class.scrolled]="scrollService.scrollY() > 50"
+        [class.hidden]="scrollService.scrollY() > 300 && scrollService.scrollDirection() === 'down'">
+  <div class="header-container">
+    <a routerLink="/" class="logo">
+      <span class="logo-mark">{{ getInitials() }}</span>
+      <span class="logo-text">{{ PROFILE.name.split(' ')[0] }}</span>
+    </a>
+
+    <nav class="nav-desktop">
+      @for (item of navItems; track item.label) {
+        <a [routerLink]="item.path" 
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+           class="nav-link">
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a href="{{ PROFILE.resumeUrl }}" class="btn-resume" target="_blank" rel="noopener">
+        Resume
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        </svg>
+      </a>
+
+      <button class="mobile-toggle" (click)="toggleMobile()" [class.active]="mobileOpen()">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  @if (mobileOpen()) {
+    <div class="mobile-nav">
+      @for (item of navItems; track item.label) {
+        <a [routerLink]="item.path" 
+           routerLinkActive="active"
+           (click)="mobileOpen.set(false)"
+           class="mobile-link">
+          <span class="link-number">0{{ $index + 1 }}</span>
+          <span class="link-label">{{ item.label }}</span>
+        </a>
+      }
+    </div>
+  }
+</header>

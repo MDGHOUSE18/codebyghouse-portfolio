@@ -1,0 +1,110 @@
+    <section class="about-section">
+      <div class="container">
+        <app-section-header 
+          label="About Me"
+          [titleLines]="['Passionate Developer,', 'Creative Problem Solver']"
+          [accentLine]="1"
+          description="Building premium digital experiences with modern technologies and clean code practices."
+        />
+        
+        <div class="about-grid">
+          <div class="about-content">
+            <div class="about-text">
+              @for (paragraph of aboutParagraphs; track paragraph) {
+                <p>{{ paragraph }}</p>
+              }
+            </div>
+            
+            <div class="about-details">
+              <div class="detail-item">
+                <span class="detail-label">Name</span>
+                <span class="detail-value">{{ PROFILE.name }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Title</span>
+                <span class="detail-value">{{ PROFILE.title }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Location</span>
+                <span class="detail-value">{{ PROFILE.location }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Email</span>
+                <span class="detail-value">{{ PROFILE.email }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Experience</span>
+                <span class="detail-value">{{ PROFILE.yearsOfExperience }}+ Years</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Availability</span>
+                <span class="detail-value status-available">Available</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-visual">
+            <div class="code-window">
+              <div class="window-header">
+                <div class="window-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="window-title">developer.ts</span>
+              </div>
+              <div class="window-body">
+                <pre class="code-content"><span class="code-keyword">const</span> <span class="code-var">developer</span> = &#123;
+  <span class="code-key">name</span>: <span class="code-string">'Ghouse'</span>,
+  <span class="code-key">role</span>: <span class="code-string">'.NET Full Stack Developer'</span>,
+  <span class="code-key">domain</span>: <span class="code-string">'Insurance Enterprise'</span>,
+  <span class="code-key">stack</span>: [
+    <span class="code-string">'Angular'</span>,
+    <span class="code-string">'ASP.NET MVC'</span>,
+    <span class="code-string">'C#'</span>,
+    <span class="code-string">'SQL Server'</span>,
+    <span class="code-string">'REST APIs'</span>
+  ],
+  <span class="code-key">focus</span>: <span class="code-string">'Enterprise Applications'</span>,
+  <span class="code-key">available</span>: <span class="code-bool">true</span>
+&#125;;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-section">
+          <h3 class="timeline-title">Career Journey</h3>
+          <div class="timeline">
+            @for (exp of EXPERIENCES; track exp.id; let i = $index) {
+              <div class="timeline-item" [class.current]="exp.current">
+                <div class="timeline-marker">
+                  <span class="marker-dot"></span>
+                  @if (i < EXPERIENCES.length - 1) {
+                    <span class="marker-line"></span>
+                  }
+                </div>
+                <div class="timeline-content">
+                  <div class="timeline-header">
+                    <div class="timeline-period">
+                      {{ exp.startDate }} - {{ exp.current ? 'Present' : exp.endDate }}
+                    </div>
+                    @if (exp.current) {
+                      <span class="current-badge">Current</span>
+                    }
+                  </div>
+                  <h4 class="timeline-position">{{ exp.position }}</h4>
+                  <p class="timeline-company">{{ exp.company }} • {{ exp.location }}</p>
+                  <p class="timeline-description">{{ exp.description }}</p>
+                  <div class="timeline-tech">
+                    @for (tech of exp.technologies.slice(0, 5); track tech) {
+                      <span class="tech-tag">{{ tech }}</span>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </section>

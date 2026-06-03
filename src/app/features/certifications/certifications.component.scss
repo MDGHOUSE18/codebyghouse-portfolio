@@ -1,0 +1,146 @@
+.certifications-section {
+  padding: 6rem 0;
+
+  @media (max-width: 1024px) {
+    padding: 4.5rem 0;
+  }
+
+  @media (max-width: 640px) {
+    padding: 3rem 0;
+  }
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+
+  @media (max-width: 640px) {
+    gap: 1rem;
+  }
+}
+
+.cert-card {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  transition: all 0.4s;
+  animation: fadeInUp 0.6s ease-out backwards;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+  }
+}
+
+.cert-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 1rem;
+  background: var(--gradient-accent);
+  border: 1px solid var(--color-border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.cert-content {
+  flex: 1;
+}
+
+.cert-category {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cert-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.cert-issuer {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.cert-date {
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.cert-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.skill-tag {
+  padding: 0.25rem 0.625rem;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+}
+
+.verify-link {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s;
+
+  @media (max-width: 640px) {
+    position: static;
+    display: inline-flex;
+    margin-top: 1rem;
+  }
+
+  &:hover {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
