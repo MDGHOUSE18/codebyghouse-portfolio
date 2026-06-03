@@ -25,7 +25,7 @@
 .grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 80px 80px;
@@ -245,6 +245,7 @@
 
   @media (max-width: 640px) {
     order: initial;
+    flex-direction: column; // Stack avatar and badges vertically
   }
 }
 
@@ -272,7 +273,7 @@
   animation: rotate-slow 30s linear infinite;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -4px;
     left: 50%;
@@ -313,7 +314,46 @@
     font-size: 3rem;
   }
 }
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: auto;
 
+  &.badge-1 {
+    top: 10%;
+    right: -10%;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  &.badge-2 {
+    bottom: 20%;
+    left: -15%;
+    animation: float 5s ease-in-out infinite 1s;
+  }
+
+  &.badge-3 {
+    bottom: 5%;
+    right: 5%;
+    animation: float 4.5s ease-in-out infinite 0.5s;
+  }
+
+  @media (max-width: 768px) {
+    position: static; // Remove absolute positioning on mobile
+    margin: 0;
+    animation: none !important; // Stop floating animation
+    transform: none !important;
+  }
+}
 .floating-badge {
   position: absolute;
   display: flex;
@@ -346,13 +386,14 @@
     animation: float 4.5s ease-in-out infinite 0.5s;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     position: static;
-    width: fit-content;
-    margin: 0.5rem auto 0;
+    width: auto;
+    margin: 0.5rem 0 0;
     padding: 0.5rem 0.875rem;
     font-size: 0.75rem;
     animation: none !important;
+    display: inline-flex;
   }
 }
 
@@ -390,10 +431,22 @@
 }
 
 @keyframes scrollDown {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
 }
 
 .stats-section {
@@ -458,16 +511,30 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

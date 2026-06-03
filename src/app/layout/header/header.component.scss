@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  position: relative;
   @media (max-width: 768px) {
     padding: 0 var(--container-padding);
   }
@@ -79,7 +79,9 @@
   display: flex;
   align-items: center;
   gap: 2.5rem;
-
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   @media (max-width: 1024px) {
     display: none;
   }
@@ -120,7 +122,31 @@
   align-items: center;
   gap: 1rem;
 }
+.btn-hire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--color-accent); // Accent border to make it pop
+  border-radius: 9999px;
+  color: var(--color-accent); // Accent text
+  font-size: 0.875rem;
+  font-weight: 600; // Slightly bolder
+  text-decoration: none;
+  transition: all 0.3s;
 
+  &:hover {
+    background: var(--color-accent); // Fills with accent color on hover
+    color: var(--color-bg-primary); // Text turns dark
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(201, 255, 87, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    display: none; // Hidden on mobile
+  }
+}
 .btn-resume {
   display: inline-flex;
   align-items: center;
@@ -144,7 +170,6 @@
     display: none;
   }
 }
-
 .mobile-toggle {
   display: none;
   width: 40px;

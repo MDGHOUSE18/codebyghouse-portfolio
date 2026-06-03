@@ -22,19 +22,28 @@
       }
     </nav>
 
-    <!-- <div class="header-actions">
-      <a href="{{ PROFILE.resumeUrl }}" class="btn-resume" target="_blank" rel="noopener">
-        Resume
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+    <div class="header-actions">
+      <a routerLink="/contact" class="btn-hire">
+        Hire Me
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
         </svg>
       </a>
 
-      <button class="mobile-toggle" (click)="toggleMobile()" [class.active]="mobileOpen()">
+      <button
+        class="mobile-toggle"
+        (click)="toggleMobile()"
+        [class.active]="mobileOpen()">
         <span></span>
         <span></span>
       </button>
-    </div> -->
+    </div>
   </div>
 
   @if (mobileOpen()) {
