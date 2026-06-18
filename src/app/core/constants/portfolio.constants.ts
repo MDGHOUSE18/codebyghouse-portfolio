@@ -142,6 +142,29 @@ export const PROJECTS: Project[] = [
     status: 'completed'
   },
   {
+    id: 'spendsmart-expense-tracker',
+    title: 'SpendSmart Expense Tracker',
+    description: 'A modern personal finance web application for tracking income, managing expenses, and visualizing spending habits.',
+    longDescription: 'A comprehensive expense tracking application designed to help users take control of their personal finances. Built with a modern frontend framework, it features a clean and intuitive interface for logging transactions, categorizing expenses, and setting budgets. Includes interactive data visualization with charts to provide insights into spending patterns, along with persistent local storage for seamless data management. Fully responsive and optimized for a smooth user experience across all devices.',
+    image: '/assets/images/projects/spendsmart-expense-tracker.jpg',
+    technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'Chart.js', 'Local Storage', 'Bolt'],
+    category: 'frontend',
+    githubUrl: 'https://github.com/MDGHOUSE18/SpendSmart-ExpenseTracker',
+    liveUrl: 'https://expense-tracker-app-ydzc.bolt.host/',
+    featured: true,
+    year: 2026,
+    role: 'Frontend Developer',
+    highlights: [
+      'Built a responsive personal finance tracker with a modern, clean UI',
+      'Implemented features to add, edit, and delete income and expense transactions',
+      'Integrated interactive charts to visualize spending habits and financial trends',
+      'Utilized local storage for persistent data management without requiring a backend',
+      'Designed a user-friendly interface optimized for both desktop and mobile devices',
+      'Deployed the production-ready application seamlessly via Bolt.new'
+    ],
+    status: 'completed'
+  },
+  {
     id: 'bookstore-webapp',
     title: 'Bookstore Web Application',
     description: 'Full-stack bookstore system with books, cart, wishlist, orders, feedback, users, and JWT auth.',
