@@ -295,11 +295,11 @@ export const EXPERIENCES: Experience[] = [
 export const EDUCATION: Education[] = [
   {
     id: 'edu-1',
-    institution: 'University',
-    degree: "Bachelor's Degree",
-    field: 'Computer Science / Engineering',
-    startDate: '2020',
-    endDate: '2024',
+    institution: 'Sri Venkateswara College Of Engineering & Technology(Autonomous), Chittoor, Andhra Pradesh',
+    degree: "B.Tech",
+    field: 'Mechanical Engineering',
+    startDate: '2019',
+    endDate: '2023',
     description: 'Focused on software development, database management, and web technologies.'
   }
 ];
