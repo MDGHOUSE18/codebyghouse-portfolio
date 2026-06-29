@@ -1,0 +1,9 @@
+<div class="project-media" [class]="'aspect-' + aspect().replace('/', '-')">
+  @if (image() && !imageLoadFailed()) {
+    <img [src]="image()" [alt]="title()" loading="lazy" (error)="onImageError()" />
+  } @else {
+    <div class="placeholder">
+      <span class="placeholder-title">{{ title() }}</span>
+    </div>
+  }
+</div>

@@ -1,56 +1,27 @@
-<section class="skills-section">
+<section id="skills" class="landing-section skills-section" data-section="skills">
   <div class="container">
     <app-section-header
-      label="Skills & Expertise"
-      [titleLines]="['Technologies I', 'Work With Daily']"
-      [accentLine]="1"
-      description="A comprehensive toolkit built over years of professional development experience." />
+      appReveal
+      label="Tech Stack"
+      title="Tools I build with every day"
+      description="A focused toolkit for enterprise web applications — backend, frontend, and data."
+      [centered]="true" />
 
-    <div class="skills-categories">
-      @for (category of SKILL_CATEGORIES; track category.id; let i = $index) {
-        <div
-          class="category-block"
-          [class.active]="activeCategory() === category.id"
-          (click)="setActiveCategory(category.id)">
-          <div class="category-header">
-            <div class="category-icon">{{ getCategoryIcon(category.id) }}</div>
-            <div class="category-info">
-              <h3 class="category-name">{{ category.name }}</h3>
-              <p class="category-description">{{ category.description }}</p>
-            </div>
-            <div class="category-count">
-              {{ category.skills?.length ?? 0 }} Skills
-            </div>
+    <div class="skills-grid" appReveal [revealStagger]="80">
+      @for (category of SKILL_CATEGORIES; track category.id) {
+        <div class="skill-category">
+          <div class="category-head">
+            <span class="category-dot"></span>
+            <h3 class="category-name">{{ category.name }}</h3>
           </div>
-
-          <div class="skills-grid">
+          <p class="category-desc">{{ category.description }}</p>
+          <ul class="skill-list">
             @for (skill of category.skills; track skill.name) {
-              <div
-                class="skill-item"
-                [style.--skill-color]="skill.color || 'var(--color-accent)'">
-                <div class="skill-header">
-                  <span class="skill-name">{{ skill.name }}</span>
-                  <span class="skill-level">{{ skill.level }}%</span>
-                </div>
-                <div class="skill-bar">
-                  <div
-                    class="skill-progress"
-                    [style.width.%]="skill.level"></div>
-                </div>
-              </div>
+              <li>{{ skill.name }}</li>
             }
-          </div>
+          </ul>
         </div>
       }
     </div>
-
-    <!-- <div class="tech-marquee">
-      <div class="marquee-label">Technologies I Love</div>
-      <div class="tech-grid">
-        @for (tech of allTech; track tech) {
-          <div class="tech-chip">{{ tech }}</div>
-        }
-      </div>
-    </div> -->
   </div>
 </section>

@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
   styleUrl: './magnetic-button.component.scss'
 })
 export class MagneticButtonComponent implements AfterViewInit {
-  readonly variant = input<'primary' | 'outline' | 'ghost'>('primary');
+  readonly variant = input<'primary' | 'outline' | 'ghost' | 'solid'>('primary');
   readonly strength = input(0.3);
   
   private readonly btnRef = viewChild.required<ElementRef<HTMLButtonElement>>('btn');
@@ -17,6 +17,8 @@ export class MagneticButtonComponent implements AfterViewInit {
   
   ngAfterViewInit(): void {
     if (typeof window === 'undefined') return;
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+    if (this.variant() === 'solid') return;
     
     const btn = this.btnRef().nativeElement;
     const content = btn.querySelector('.btn-content') as HTMLElement;

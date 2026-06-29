@@ -1,18 +1,17 @@
-<div class="section-header">
+<div class="section-header" [class.centered]="centered()">
   @if (label()) {
-    <div class="section-label">
-      <span class="label-line"></span>
-      <span class="label-text">{{ label() }}</span>
-    </div>
+    <p class="section-eyebrow">{{ label() }}</p>
   }
-  <h2 class="section-title">
-    @for (line of titleLines(); track line; let i = $index) {
-      <span class="title-line" [class.accent]="i === accentLine()">
-        {{ line }}
-      </span>
-    }
-  </h2>
+  @if (title()) {
+    <h2 class="section-headline">{{ title() }}</h2>
+  } @else {
+    <h2 class="section-headline">
+      @for (line of titleLines(); track line) {
+        <span class="headline-line">{{ line }}</span>
+      }
+    </h2>
+  }
   @if (description()) {
-    <p class="section-description">{{ description() }}</p>
+    <p class="section-lead">{{ description() }}</p>
   }
 </div>

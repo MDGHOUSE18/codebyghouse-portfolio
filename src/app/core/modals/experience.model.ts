@@ -12,14 +12,3 @@ export interface Experience {
   logo?: string;
   companyUrl?: string;
 }
-
-export interface Education {
-  id: string;
-  institution: string;
-  degree: string;
-  field: string;
-  startDate: string;
-  endDate: string;
-  grade?: string;
-  description?: string;
-}

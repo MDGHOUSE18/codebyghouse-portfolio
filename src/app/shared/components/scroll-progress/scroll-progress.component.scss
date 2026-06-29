@@ -12,5 +12,5 @@
   height: 100%;
   background: var(--gradient-primary);
   transition: width 0.1s ease-out;
-  box-shadow: 0 0 10px rgba(201, 255, 87, 0.5);
+  box-shadow: var(--shadow-accent);
 }

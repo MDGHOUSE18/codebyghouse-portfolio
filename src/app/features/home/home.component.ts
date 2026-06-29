@@ -1,78 +1,121 @@
-import { Component, inject, OnInit, ElementRef, viewChild, AfterViewInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { PROFILE, SOCIAL_LINKS, MARQUEE_SKILLS } from '@core/constants/portfolio.constants';
-import { MarqueeTextComponent } from '@shared/components/marquee-text/marquee-text.component';
+import { Component, inject, OnInit, AfterViewInit, ElementRef, viewChild, DestroyRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { PROFILE } from '@core/constants/portfolio.constants';
 import { MagneticButtonComponent } from '@shared/components/magnetic-button/magnetic-button.component';
-import { AnimatedCounterComponent } from '@shared/components/animated-counter/animated-counter.component';
+import { SmoothScrollService } from '@core/services/smooth-scroll.service';
+import { ScrollService } from '@core/services/scroll.service';
 import { SeoService } from '@core/services/seo.service';
+import { ProjectsComponent } from '@features/projects/projects.component';
+import { SkillsComponent } from '@features/skills/skills.component';
+import { AboutComponent } from '@features/about/about.component';
+import { ContactComponent } from '@features/contact/contact.component';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterLink,
-    MarqueeTextComponent,
-    MagneticButtonComponent
+    MagneticButtonComponent,
+    ProjectsComponent,
+    SkillsComponent,
+    AboutComponent,
+    ContactComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   readonly PROFILE = PROFILE;
-  readonly SOCIAL_LINKS = SOCIAL_LINKS;
-  readonly MARQUEE_SKILLS = MARQUEE_SKILLS;
 
   private readonly seoService = inject(SeoService);
-  private readonly heroContent = viewChild<ElementRef<HTMLElement>>('heroContent');
-  private readonly heroVisual = viewChild<ElementRef<HTMLElement>>('heroVisual');
+  private readonly smoothScroll = inject(SmoothScrollService);
+  private readonly scrollService = inject(ScrollService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly destroyRef = inject(DestroyRef);
+
+  private readonly heroEyebrow = viewChild<ElementRef<HTMLElement>>('heroEyebrow');
+  private readonly heroHeadline = viewChild<ElementRef<HTMLElement>>('heroHeadline');
+  private readonly heroSubline = viewChild<ElementRef<HTMLElement>>('heroSubline');
+  private readonly heroCta = viewChild<ElementRef<HTMLElement>>('heroCta');
+  private readonly heroWatermark = viewChild<ElementRef<HTMLElement>>('heroWatermark');
 
   ngOnInit(): void {
     this.seoService.updateTitle('Home');
     this.seoService.updateMeta(
-      `${PROFILE.name} - ${PROFILE.title}. ${PROFILE.bio}`,
-      'Angular Developer, Full Stack, ASP.NET Core, Spring Boot, Bangalore'
+      `${PROFILE.name} - ${PROFILE.title}. ${PROFILE.tagline}`,
+      'Angular Developer, Full Stack, ASP.NET Core, .NET, Hyderabad'
     );
+
+    this.route.fragment
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((fragment) => {
+        if (fragment) {
+          setTimeout(() => {
+            const el = document.getElementById(fragment);
+            if (el) this.smoothScroll.scrollTo(el);
+          }, 200);
+        }
+      });
   }
 
   ngAfterViewInit(): void {
+    this.scrollService.observeSections();
     this.animateHero();
+    this.scrollToFragmentIfNeeded();
+  }
+
+  private scrollToFragmentIfNeeded(): void {
+    const fragment =
+      this.route.snapshot.fragment ??
+      (this.route.snapshot.data['fragment'] as string | undefined);
+    if (fragment) {
+      setTimeout(() => this.smoothScroll.scrollTo(`#${fragment}`), 300);
+    }
+  }
+
+  scrollToProjects(): void {
+    this.smoothScroll.scrollTo('#projects');
   }
 
   private animateHero(): void {
     if (typeof window === 'undefined') return;
 
-    const content = this.heroContent()?.nativeElement;
-    const visual = this.heroVisual()?.nativeElement;
+    const prefersReducedMotion =
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    if (prefersReducedMotion) return;
 
-    if (content) {
-      gsap.from(content.children, {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        delay: 0.3
-      });
+    gsap.registerPlugin(ScrollTrigger);
+
+    const eyebrow = this.heroEyebrow()?.nativeElement;
+    const headline = this.heroHeadline()?.nativeElement;
+    const subline = this.heroSubline()?.nativeElement;
+    const cta = this.heroCta()?.nativeElement;
+    const watermark = this.heroWatermark()?.nativeElement;
+
+    const lines = headline?.querySelectorAll('.headline-line');
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    if (eyebrow) {
+      tl.from(eyebrow, { y: 30, opacity: 0, duration: 0.8 }, 0.2);
     }
-
-    if (visual) {
-      gsap.from(visual, {
-        scale: 0.8,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.5
-      });
+    if (lines?.length) {
+      tl.from(lines, { y: 50, opacity: 0, duration: 1, stagger: 0.12 }, 0.35);
     }
-  }
-
-  getSocialIcon(icon: string): string {
-    const icons: Record<string, string> = {
-      github: '⚡',
-      linkedin: '💼',
-      mail: '✉️'
-    };
-    return icons[icon] || '🔗';
+    if (subline) {
+      tl.from(subline, { y: 30, opacity: 0, duration: 0.8 }, 0.65);
+    }
+    if (cta) {
+      tl.from(cta, { y: 20, opacity: 0, scale: 0.96, duration: 0.8 }, 0.8);
+    }
+    if (watermark) {
+      gsap.fromTo(
+        watermark,
+        { opacity: 0 },
+        { opacity: 0.035, duration: 1.2, ease: 'power2.out', delay: 0.1 }
+      );
+    }
   }
 }

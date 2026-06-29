@@ -1,47 +1,51 @@
 // ========================================
 // Premium Portfolio - Design Tokens
-// Inspired by Landin Template Aesthetic
+// Modern Tech Professional Theme
 // ========================================
 
-// Color System - Premium Dark Theme
+// Color System - Dark Theme (default)
 :root {
   // Primary Colors
   --color-primary: #ffffff;
   --color-primary-rgb: 255, 255, 255;
-  
+
   // Accent Colors
-  --color-accent: #c9ff57;
-  --color-accent-rgb: 201, 255, 87;
-  --color-accent-hover: #b8ee46;
-  
+  --color-accent: #6366f1;
+  --color-accent-rgb: 99, 102, 241;
+  --color-accent-hover: #4f46e5;
+  --color-accent-muted: rgba(99, 102, 241, 0.1);
+  --color-accent-subtle: rgba(99, 102, 241, 0.05);
+  --color-accent-border: rgba(99, 102, 241, 0.25);
+  --color-on-accent: #ffffff;
+
   // Background Colors
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #111111;
-  --color-bg-tertiary: #1a1a1a;
-  --color-bg-elevated: #222222;
-  
+  --color-bg-primary: #0b1120;
+  --color-bg-secondary: #111827;
+  --color-bg-tertiary: #1e293b;
+  --color-bg-elevated: #243044;
+
   // Text Colors
   --color-text-primary: #ffffff;
-  --color-text-secondary: #a0a0a0;
-  --color-text-tertiary: #666666;
-  --color-text-muted: #444444;
-  
+  --color-text-secondary: #94a3b8;
+  --color-text-tertiary: #64748b;
+  --color-text-muted: #475569;
+
   // Border Colors
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-hover: rgba(255, 255, 255, 0.15);
-  --color-border-accent: rgba(201, 255, 87, 0.3);
-  
+  --color-border-accent: rgba(99, 102, 241, 0.3);
+
   // Glassmorphism
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: 20px;
-  
+
   // Gradients
-  --gradient-primary: linear-gradient(135deg, #c9ff57 0%, #7cffcb 100%);
-  --gradient-dark: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
-  --gradient-accent: linear-gradient(135deg, rgba(201, 255, 87, 0.1) 0%, rgba(124, 255, 203, 0.1) 100%);
-  --gradient-glow: radial-gradient(circle, rgba(201, 255, 87, 0.15) 0%, transparent 70%);
-  
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
+  --gradient-dark: linear-gradient(180deg, #0b1120 0%, #111827 100%);
+  --gradient-accent: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(56, 189, 248, 0.1) 100%);
+  --gradient-glow: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+
   // Spacing Scale
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -52,31 +56,31 @@
   --space-3xl: 4rem;
   --space-4xl: 6rem;
   --space-5xl: 8rem;
-  
+
   // Typography
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 2rem;
-  --text-4xl: 2.5rem;
-  --text-5xl: 3.5rem;
-  --text-6xl: 4.5rem;
-  --text-7xl: 6rem;
-  --text-8xl: 8rem;
-  
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.625rem;
+  --text-4xl: 2rem;
+  --text-5xl: 2.75rem;
+  --text-6xl: 3.5rem;
+  --text-7xl: 4.75rem;
+  --text-8xl: 6.25rem;
+
   // Line Heights
   --leading-tight: 1.1;
   --leading-snug: 1.3;
   --leading-normal: 1.5;
   --leading-relaxed: 1.7;
-  
+
   // Font Weights
   --font-light: 300;
   --font-regular: 400;
@@ -84,7 +88,7 @@
   --font-semibold: 600;
   --font-bold: 700;
   --font-extrabold: 800;
-  
+
   // Border Radius
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -92,21 +96,26 @@
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
   --radius-full: 9999px;
-  
+
   // Shadows
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 40px rgba(201, 255, 87, 0.15);
-  --shadow-glow-lg: 0 0 80px rgba(201, 255, 87, 0.2);
-  
+  --shadow-accent: 0 0 40px rgba(99, 102, 241, 0.15);
+  --shadow-accent-lg: 0 0 80px rgba(99, 102, 241, 0.2);
+  --shadow-glow: var(--shadow-accent);
+  --shadow-glow-lg: var(--shadow-accent-lg);
+
   // Transitions
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 450ms var(--ease-out-expo);
   --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  
+
   // Z-Index Scale
   --z-base: 1;
   --z-dropdown: 100;
@@ -117,26 +126,94 @@
   --z-popover: 600;
   --z-tooltip: 700;
   --z-cursor: 9999;
-  
-  // Container
-  --container-max: 1400px;
+
+  // Container — scaled for compact 80%-zoom feel at 100% browser zoom
+  --container-max: 1080px;
   --container-padding: 2rem;
-  
+
   // Header
-  --header-height: 80px;
+  --header-height: 64px;
+
+  // Obermann-style editorial tokens (≈80% scale)
+  --hero-gradient: radial-gradient(
+    ellipse 70% 55% at 50% 45%,
+    rgba(99, 102, 241, 0.16) 0%,
+    rgba(11, 17, 32, 0.4) 45%,
+    #0b1120 100%
+  );
+  --hero-watermark-opacity: 0.035;
+  --section-padding-y: clamp(3.5rem, 9vh, 6.5rem);
+  --text-eyebrow-size: 0.625rem;
+  --text-eyebrow-spacing: 0.26em;
+  --text-hero-size: clamp(2.125rem, 5.5vw, 4.25rem);
+  --text-section-size: clamp(1.625rem, 3.5vw, 2.75rem);
+  --text-lead-size: 0.9375rem;
+  --content-narrow: 560px;
+  --content-wide: 920px;
+  --cta-solid-bg: #ffffff;
+  --cta-solid-text: #0b1120;
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --container-padding: clamp(2.5rem, 6vw, 5rem);
+  }
+}
+
+// Light Theme
+[data-theme="light"] {
+  --color-accent: #4f46e5;
+  --color-accent-rgb: 79, 70, 229;
+  --color-accent-hover: #4338ca;
+  --color-accent-muted: rgba(79, 70, 229, 0.1);
+  --color-accent-subtle: rgba(79, 70, 229, 0.05);
+  --color-accent-border: rgba(79, 70, 229, 0.25);
+  --color-on-accent: #ffffff;
+
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #f1f5f9;
+  --color-bg-tertiary: #e2e8f0;
+  --color-bg-elevated: #ffffff;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-text-muted: #94a3b8;
+
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border-hover: rgba(15, 23, 42, 0.15);
+  --color-border-accent: rgba(79, 70, 229, 0.3);
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.08);
+
+  --gradient-dark: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  --gradient-accent: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(56, 189, 248, 0.08) 100%);
+  --gradient-glow: radial-gradient(circle, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
+
+  --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.1);
+  --shadow-xl: 0 16px 48px rgba(15, 23, 42, 0.12);
+  --shadow-accent: 0 0 40px rgba(79, 70, 229, 0.12);
+  --shadow-accent-lg: 0 0 80px rgba(79, 70, 229, 0.15);
+  --shadow-glow: var(--shadow-accent);
+  --shadow-glow-lg: var(--shadow-accent-lg);
 }
 
 @media (max-width: 1024px) {
   :root {
     --container-padding: 1.5rem;
-    --header-height: 72px;
+    --header-height: 58px;
   }
 }
 
 @media (max-width: 640px) {
   :root {
-    --container-padding: 1rem;
-    --header-height: 64px;
+    --container-padding: 1.125rem;
+    --header-height: 52px;
+    --text-hero-size: clamp(1.875rem, 8vw, 2.5rem);
+    --text-section-size: clamp(1.5rem, 6vw, 2rem);
   }
 }
 

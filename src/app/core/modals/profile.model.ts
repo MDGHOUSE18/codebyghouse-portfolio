@@ -10,12 +10,7 @@ export interface Profile {
   github: string;
   linkedin: string;
   twitter?: string;
-  bio: string;
   about: string;
-  yearsOfExperience: number;
-  projectsCompleted: number;
-  happyClients: number;
-  certificationsCount: number;
 }
 
 export interface SocialLink {

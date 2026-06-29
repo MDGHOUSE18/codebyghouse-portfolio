@@ -1,145 +1,71 @@
-<section class="projects-section">
+<section id="projects" class="landing-section projects-section" data-section="projects">
   <div class="container">
     <app-section-header
-      label="Featured Projects"
-      [titleLines]="['Selected Work,', 'Crafted With Care']"
-      [accentLine]="0"
-      description="A showcase of projects that demonstrate my expertise in building modern web applications." />
+      appReveal
+      label="Selected Work"
+      title="Projects that speak for themselves"
+      description="Enterprise applications and products built with Angular, ASP.NET, and SQL Server." />
 
-    <div class="filter-bar">
-      <label class="filter-label" for="project-filter">Project Type</label>
-      <div class="filter-select-wrap">
-        <select
-          id="project-filter"
-          class="filter-select"
-          [value]="activeFilter()"
-          (change)="onFilterChange($event)">
-          @for (filter of filters; track filter.value) {
-            <option [value]="filter.value">{{ filter.label }}</option>
-          }
-        </select>
-      </div>
-    </div>
-
-    <div class="projects-grid">
-      @for (project of filteredProjects(); track project.id; let i = $index) {
+    <div class="case-studies">
+      @for (project of featuredProjects(); track project.id; let i = $index) {
         <article
-          class="project-card"
-          [class.featured]="project.featured"
-          [style.animation-delay]="i * 0.1 + 's'">
-          <div class="project-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">💻</span>
-              <span class="placeholder-text">{{ project.title }}</span>
-            </div>
-            @if (project.featured) {
-              <div class="featured-badge">Featured</div>
-            }
-            <div class="project-overlay">
-              <a
-                [href]="project.githubUrl"
-                target="_blank"
-                rel="noopener"
-                class="overlay-btn">
-                View Code →
-              </a>
-            </div>
+          class="case-study"
+          [class.reversed]="i % 2 === 1"
+          appReveal>
+          <div class="case-media" [attr.data-parallax]="project.id">
+            <app-project-image-placeholder
+              [title]="project.title"
+              [image]="project.image" />
           </div>
-
-          <div class="project-content">
-            <div class="project-meta">
-              <span class="project-year">{{ project.year }}</span>
-              <span class="project-category">{{
-                getCategoryLabel(project.category)
-              }}</span>
-            </div>
-
-            <h3 class="project-title">{{ project.title }}</h3>
-            <p class="project-description">{{ project.description }}</p>
-
-            <div class="project-tech">
-              @for (tech of project.technologies.slice(0, 4); track tech) {
-                <span class="tech-tag">{{ tech }}</span>
-              }
-              @if (project.technologies.length > 4) {
-                <span class="tech-more"
-                  >+{{ project.technologies.length - 4 }}</span
-                >
-              }
-            </div>
-
-            <div class="project-footer">
-              <a
-                [href]="project.githubUrl"
-                target="_blank"
-                rel="noopener"
-                class="project-link">
-                GitHub
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-              </a>
+          <div class="case-content">
+            <span class="case-year">{{ project.year }}</span>
+            <h3 class="case-title">{{ project.title }}</h3>
+            <p class="case-story">{{ project.longDescription }}</p>
+            <p class="case-tech">{{ project.technologies.join(' · ') }}</p>
+            <div class="case-links">
               @if (project.liveUrl) {
                 <a
                   [href]="project.liveUrl"
                   target="_blank"
                   rel="noopener"
-                  class="project-link accent">
-                  Live Demo
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
+                  class="text-link">
+                  View live
+                  <span aria-hidden="true">→</span>
                 </a>
               }
+              <a
+                [href]="project.githubUrl"
+                target="_blank"
+                rel="noopener"
+                class="text-link">
+                View code
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
           </div>
         </article>
       }
     </div>
-  </div>
-  <!-- GitHub Repos Section -->
-  <!-- <div class="github-section">
-  <h3 class="github-title">
-    <span>⚡</span> Latest from GitHub
-    <a href="https://github.com/MDGHOUSE18" target="_blank" class="github-link">@MDGHOUSE18</a>
-  </h3>
 
-  @if (githubLoading()) {
-    <div class="loading-state">Loading repositories...</div>
-  } @else {
-    <div class="repos-grid">
-      @for (repo of githubRepos().slice(0, 6); track repo.id) {
-        <a [href]="repo.html_url" target="_blank" rel="noopener" class="repo-card">
-          <div class="repo-header">
-            <span class="repo-icon">📦</span>
-            <h4 class="repo-name">{{ repo.name }}</h4>
-          </div>
-          <p class="repo-description">{{ repo.description || 'No description' }}</p>
-          <div class="repo-meta">
-            @if (repo.language) {
-              <span class="repo-language">
-                <span class="lang-dot"></span>
-                {{ repo.language }}
-              </span>
-            }
-            <span class="repo-stars">⭐ {{ repo.stargazers_count }}</span>
-            <span class="repo-forks">🍴 {{ repo.forks_count }}</span>
-          </div>
-        </a>
-      }
-    </div>
-  }
-</div> -->
+    @if (otherProjects().length) {
+      <div class="concepts-row" appReveal [revealStagger]="80">
+        <p class="concepts-label">More projects</p>
+        <div class="concepts-grid">
+          @for (project of otherProjects(); track project.id) {
+            <a
+              class="concept-card"
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener">
+              <app-project-image-placeholder
+                [title]="project.title"
+                [image]="project.image"
+                aspect="3/2" />
+              <span class="concept-title">{{ project.title }}</span>
+            </a>
+          }
+        </div>
+      </div>
+    }
+  </div>
 </section>

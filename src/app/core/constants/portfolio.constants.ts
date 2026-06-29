@@ -1,9 +1,7 @@
 import { Profile } from '../modals/profile.model';
 import { SkillCategory } from '../modals/skill.model';
 import { Project } from '../modals/project.model';
-import { Experience, Education } from '../modals/experience.model';
-import { Testimonial } from '../modals/testimonial.model';
-import { Certification } from '../modals/certification.model';
+import { Experience } from '../modals/experience.model';
 import { Service } from '../modals/service.model';
 
 export const PROFILE: Profile = {
@@ -12,26 +10,19 @@ export const PROFILE: Profile = {
   tagline: 'Building scalable enterprise applications with Angular, ASP.NET & SQL Server.',
   location: 'Hyderabad, India',
   email: 'mdghouse23102@gmail.com', // Update with your real email
-  avatar: '/assets/images/avatar.jpg',
-  resumeUrl: '/assets/documents/resume.pdf',
+  avatar: '/assets/images/Profile_Photo.png',
+  resumeUrl: '',//'/assets/documents/resume.pdf',
   github: 'https://github.com/MDGHOUSE18',
   linkedin: 'https://www.linkedin.com/in/mahammed-ghouse-05b1a4203/',
-  bio: `I'm a .NET Full Stack Developer specializing in Angular, ASP.NET, and SQL Server. 
-        Currently working in the insurance domain, building enterprise-level web applications 
-        with scalable backend systems, dynamic frontend interfaces, and optimized database solutions.`,
   about: `I'm Ghouse — a .NET Full Stack Developer with experience building enterprise-level web applications using ASP.NET, Angular, SQL Server, and REST APIs. Currently working in the insurance domain, I handle both backend business logic and frontend application development, including claim processing systems, policy management modules, dynamic UI components, and API integrations.
 
-I have practical experience working on production applications involving complex validations, SQL optimization, recursive Angular components, reusable UI architectures, and responsive application design. My focus is on building scalable, maintainable, and performance-oriented solutions.`,
-  yearsOfExperience: 1,
-  projectsCompleted: 6,
-  happyClients: 5,
-  certificationsCount: 4
+I have practical experience working on production applications involving complex validations, SQL optimization, recursive Angular components, reusable UI architectures, and responsive application design. My focus is on building scalable, maintainable, and performance-oriented solutions.`
 };
 
 export const SOCIAL_LINKS = [
   { name: 'GitHub', url: 'https://github.com/MDGHOUSE18', icon: 'github' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mahammed-ghouse-05b1a4203/', icon: 'linkedin' },
-  { name: 'Email', url: 'mailto:mahammedghouse@example.com', icon: 'mail' }
+  { name: 'Email', url: 'mailto:mdghouse23102@gmail.com', icon: 'mail' }
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -102,7 +93,7 @@ export const PROJECTS: Project[] = [
     title: 'Roommate Expense Manager',
     description: 'Responsive web app for tracking shared expenses, balances, monthly summaries, and settlements.',
     longDescription: 'A lightweight expense management app for roommates with Firebase authentication, Firestore storage, monthly dashboards, category tracking, automatic splitting, settlement calculation, Excel export, and light/dark mode.',
-    image: '/assets/images/projects/roommate-expense.jpg',
+    image: '/assets/images/roommate-expense.png',
     technologies: ['JavaScript', 'Firebase Auth', 'Firestore', 'HTML5', 'CSS3', 'SheetJS'],
     category: 'frontend',
     githubUrl: 'https://github.com/MDGHOUSE18/roommate-expense-manager',
@@ -123,7 +114,7 @@ export const PROJECTS: Project[] = [
     title: 'CodeByGhouse Portfolio',
     description: 'Modern responsive developer portfolio showcasing projects, skills, experience, and services.',
     longDescription: 'A premium personal portfolio website built with Angular featuring smooth animations, responsive layouts, reusable components, dark/light theme support, project showcases, certifications, testimonials, and contact integration. Designed to present full-stack development expertise with modern UI/UX practices.',
-    image: '/assets/images/projects/codebyghouse-portfolio.jpg',
+    image: '/assets/images/codebyghouse-portfolio.png',
     technologies: ['Angular', 'TypeScript', 'HTML5', 'SCSS', 'Bootstrap', 'Netlify'],
     category: 'frontend',
     githubUrl: 'https://github.com/MDGHOUSE18/codebyghouse-portfolio',
@@ -146,7 +137,7 @@ export const PROJECTS: Project[] = [
     title: 'SpendSmart Expense Tracker',
     description: 'A modern personal finance web application for tracking income, managing expenses, and visualizing spending habits.',
     longDescription: 'A comprehensive expense tracking application designed to help users take control of their personal finances. Built with a modern frontend framework, it features a clean and intuitive interface for logging transactions, categorizing expenses, and setting budgets. Includes interactive data visualization with charts to provide insights into spending patterns, along with persistent local storage for seamless data management. Fully responsive and optimized for a smooth user experience across all devices.',
-    image: '/assets/images/projects/spendsmart-expense-tracker.jpg',
+    image: '/assets/images/spendsmart-expense-tracker.png',
     technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'Chart.js', 'Local Storage', 'Bolt'],
     category: 'frontend',
     githubUrl: 'https://github.com/MDGHOUSE18/SpendSmart-ExpenseTracker',
@@ -161,106 +152,6 @@ export const PROJECTS: Project[] = [
       'Utilized local storage for persistent data management without requiring a backend',
       'Designed a user-friendly interface optimized for both desktop and mobile devices',
       'Deployed the production-ready application seamlessly via Bolt.new'
-    ],
-    status: 'completed'
-  },
-  {
-    id: 'bookstore-webapp',
-    title: 'Bookstore Web Application',
-    description: 'Full-stack bookstore system with books, cart, wishlist, orders, feedback, users, and JWT auth.',
-    longDescription: 'A bookstore application built with ASP.NET Core Web API, Angular, SQL Server, and ADO.NET. It includes catalog management, authenticated user flows, cart and wishlist features, order processing, feedback handling, addresses, and Swagger API documentation.',
-    image: '/assets/images/projects/bookstore.jpg',
-    technologies: ['ASP.NET Core', 'Angular', 'SQL Server', 'ADO.NET', 'JWT', 'Swagger'],
-    category: 'fullstack',
-    githubUrl: 'https://github.com/MDGHOUSE18/BookStore-WebApp',
-    featured: true,
-    year: 2025,
-    role: '.NET Full Stack Developer',
-    highlights: [
-      'Built REST APIs for books, orders, cart, wishlist, feedback, and users',
-      'Implemented JWT-based authentication',
-      'Used SQL Server with ADO.NET data access',
-      'Documented APIs with Swagger UI'
-    ],
-    status: 'completed'
-  },
-  {
-    id: 'lms-backend',
-    title: 'Loan Management System API',
-    description: 'Layered .NET backend for loan workflows, authentication, OTP, refresh tokens, and audit-ready APIs.',
-    longDescription: 'A backend-focused loan management system built with ASP.NET Core, Entity Framework Core, SQL Server, repository pattern, layered architecture, JWT authentication, OTP verification, email verification, refresh tokens, login history, and loan draft/submit workflows.',
-    image: '/assets/images/projects/lms-backend.jpg',
-    technologies: ['ASP.NET Core', 'C#', 'Entity Framework Core', 'SQL Server', 'JWT', 'Repository Pattern'],
-    category: 'backend',
-    githubUrl: 'https://github.com/MDGHOUSE18/LMS-Backend',
-    featured: true,
-    year: 2026,
-    role: 'Backend Developer',
-    highlights: [
-      'Built layered API architecture with Application, Domain, Infrastructure, and API projects',
-      'Implemented registration, login, OTP verification, refresh token, logout, and password reset flows',
-      'Created loan draft, update, and submit endpoints',
-      'Designed EF Core entities for users, roles, tokens, login history, and loan data'
-    ],
-    status: 'completed'
-  },
-  {
-    id: 'taskflow',
-    title: 'TaskFlow Task Manager',
-    description: 'Task management app with Angular client, ASP.NET Core API, JWT auth, and task CRUD workflows.',
-    longDescription: 'A full-stack task management system split across Angular frontend and ASP.NET Core API repositories. The backend includes authentication, token generation, EF Core persistence, and task create/read/update/delete APIs. The frontend includes login, registration, dashboard layout, task listing, modal-based task creation/editing, validation, priority labels, and API integration.',
-    image: '/assets/images/projects/taskflow.jpg',
-    technologies: ['Angular', 'ASP.NET Core', 'C#', 'Entity Framework Core', 'JWT', 'Bootstrap'],
-    category: 'fullstack',
-    githubUrl: 'https://github.com/MDGHOUSE18/TaskFlow.Api',
-    featured: true,
-    year: 2026,
-    role: '.NET Full Stack Developer',
-    highlights: [
-      'Built task CRUD APIs with user-scoped data access',
-      'Implemented login/register flow with JWT token storage',
-      'Created Angular task UI with modal create/edit forms',
-      'Separated backend services, interfaces, DTOs, controllers, and EF Core data layer'
-    ],
-    status: 'completed'
-  },
-  {
-    id: 'fundoo-notes',
-    title: 'Fundoo Notes',
-    description: 'Feature-rich notes platform with JWT authentication, reminders, labels, and collaboration features.',
-    longDescription: 'A notes management application with ASP.NET Core backend and Angular frontend. It includes secure registration/login, password recovery, note CRUD, labels, reminders, sharing, comments, and responsive UI structure.',
-    image: '/assets/images/projects/fundoo-notes.jpg',
-    technologies: ['ASP.NET Core', 'Angular', 'SQL Server', 'JWT', 'TypeScript', 'SCSS'],
-    category: 'fullstack',
-    githubUrl: 'https://github.com/MDGHOUSE18/FundooNotesProject',
-    featured: false,
-    year: 2025,
-    role: '.NET Full Stack Developer',
-    highlights: [
-      'Implemented JWT authentication and password recovery',
-      'Built note CRUD with labels and reminders',
-      'Added sharing and comment-oriented collaboration features',
-      'Connected backend API with Angular frontend project'
-    ],
-    status: 'completed'
-  },
-  {
-    id: 'eventhub-webforms',
-    title: 'EventHub Management System',
-    description: 'ASP.NET WebForms event platform with admin event management, user sessions, roles, and SQL procedures.',
-    longDescription: 'A complete event management web application built with ASP.NET WebForms and SQL Server. It includes sign-in/sign-up, hashed passwords, session-based role routing, admin dashboards, event create/edit/delete flows, event image upload, stored procedure data access, and user-facing event pages.',
-    image: '/assets/images/projects/eventhub.jpg',
-    technologies: ['ASP.NET WebForms', 'C#', 'SQL Server', 'Stored Procedures', 'Bootstrap', 'ADO.NET'],
-    category: 'fullstack',
-    githubUrl: 'https://github.com/MDGHOUSE18/EventHub-ASP.NET-WebForms',
-    featured: false,
-    year: 2024,
-    role: 'ASP.NET Developer',
-    highlights: [
-      'Built admin event create, edit, delete, and detail workflows',
-      'Implemented sign-in with hashed password validation',
-      'Used sessions and role-based redirects for admin/user flows',
-      'Integrated SQL Server stored procedures and event image uploads'
     ],
     status: 'completed'
   }
@@ -289,18 +180,6 @@ export const EXPERIENCES: Experience[] = [
       'Implemented asynchronous data handling and AJAX-based dynamic rendering'
     ],
     technologies: ['ASP.NET MVC', 'Angular', 'C#', 'SQL Server', 'REST APIs', 'Bootstrap', 'Entity Framework']
-  }
-];
-
-export const EDUCATION: Education[] = [
-  {
-    id: 'edu-1',
-    institution: 'Sri Venkateswara College Of Engineering & Technology(Autonomous), Chittoor, Andhra Pradesh',
-    degree: "B.Tech",
-    field: 'Mechanical Engineering',
-    startDate: '2019',
-    endDate: '2023',
-    description: 'Focused on software development, database management, and web technologies.'
   }
 ];
 
@@ -370,93 +249,4 @@ export const SERVICES: Service[] = [
     duration: '2-6 Weeks',
     category: 'development'
   }
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 'test-1',
-    name: 'Project Manager',
-    position: 'Senior Manager',
-    company: 'Insurance Company',
-    avatar: '/assets/images/testimonials/client1.jpg',
-    content: 'Ghouse delivered exceptional work on our claim processing system. His expertise in both ASP.NET and Angular made him invaluable to the project. Clean code and on-time delivery.',
-    rating: 5,
-    projectType: 'Enterprise Application'
-  },
-  {
-    id: 'test-2',
-    name: 'Team Lead',
-    position: 'Technical Lead',
-    company: 'Software Solutions',
-    avatar: '/assets/images/testimonials/client2.jpg',
-    content: 'Working with Ghouse was a pleasure. His SQL optimization skills significantly improved our application performance. He built reusable components that saved us countless hours.',
-    rating: 5,
-    projectType: 'Database Optimization'
-  },
-  {
-    id: 'test-3',
-    name: 'Product Owner',
-    position: 'Business Analyst',
-    company: 'Tech Corp',
-    avatar: '/assets/images/testimonials/client3.jpg',
-    content: 'Ghouse handled complex API integrations flawlessly. His understanding of both frontend and backend made him the perfect full-stack developer for our enterprise project.',
-    rating: 5,
-    projectType: 'API Integration'
-  }
-];
-
-export const CERTIFICATIONS: Certification[] = [
-  {
-    id: 'cert-1',
-    name: 'Angular Development',
-    issuer: 'Online Platform',
-    date: '2024',
-    icon: 'angular',
-    category: 'Frontend',
-    skills: ['Angular', 'TypeScript', 'RxJS']
-  },
-  {
-    id: 'cert-2',
-    name: 'ASP.NET Development',
-    issuer: 'Microsoft',
-    date: '2024',
-    icon: 'dotnet',
-    category: 'Backend',
-    skills: ['ASP.NET MVC', 'C#', 'Entity Framework']
-  },
-  {
-    id: 'cert-3',
-    name: 'SQL Server Development',
-    issuer: 'Microsoft',
-    date: '2024',
-    icon: 'database',
-    category: 'Database',
-    skills: ['SQL Server', 'Stored Procedures', 'Query Optimization']
-  },
-  {
-    id: 'cert-4',
-    name: 'Full Stack Web Development',
-    issuer: 'Training Institute',
-    date: '2024',
-    icon: 'code',
-    category: 'Full Stack',
-    skills: ['.NET', 'Angular', 'SQL Server']
-  }
-];
-
-export const MARQUEE_SKILLS = [
-  'Angular', 'ASP.NET MVC', 'C#', 'SQL Server', 'REST APIs', 'TypeScript',
-  'Entity Framework', 'Bootstrap', 'jQuery', 'Stored Procedures', 'JSON Processing',
-  'LINQ', 'Git', 'Visual Studio', 'Postman', 'Enterprise Development'
-];
-
-export const CORE_STRENGTHS = [
-  'Full Stack Development',
-  'Enterprise Application Development',
-  'API Integration',
-  'Dynamic Form Handling',
-  'Responsive UI Development',
-  'Reusable Component Architecture',
-  'SQL Performance Optimization',
-  'Business Logic Implementation'
 ];

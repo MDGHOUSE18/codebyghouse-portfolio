@@ -8,7 +8,10 @@ import { Component, input } from '@angular/core';
 })
 export class SectionHeaderComponent {
   readonly label = input('');
+  readonly title = input('');
   readonly titleLines = input<string[]>([]);
   readonly description = input('');
+  readonly centered = input(false);
+  /** @deprecated use title() instead */
   readonly accentLine = input(-1);
 }

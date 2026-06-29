@@ -125,11 +125,11 @@
 // Hover Effects
 @mixin hover-lift {
   transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth);
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
   }
 }
@@ -149,7 +149,7 @@
   gap: var(--space-sm);
   padding: var(--space-md) var(--space-xl);
   background: var(--color-accent);
-  color: var(--color-bg-primary);
+  color: var(--color-on-accent);
   font-weight: var(--font-semibold);
   border-radius: var(--radius-full);
   border: none;
@@ -166,7 +166,7 @@
   }
 
   &:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
   }
 }
 
@@ -188,7 +188,7 @@
   &:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
-    background: rgba(201, 255, 87, 0.05);
+    background: var(--color-accent-subtle);
   }
 }
 

@@ -1,12 +1,10 @@
 <app-preloader />
-<app-custom-cursor />
 <app-scroll-progress />
 <app-header />
 
 <main class="main-content">
-  <div [@routeAnimations]="getRouteAnimationData()">
-    <router-outlet />
-  </div>
+  <router-outlet />
 </main>
 
 <app-footer />
+<app-scroll-to-top />

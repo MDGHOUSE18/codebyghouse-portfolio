@@ -1,5 +1,4 @@
-import { Component, signal, OnInit, inject } from '@angular/core';
-import { PROFILE } from '@core/constants/portfolio.constants';
+import { Component, signal, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-preloader',
@@ -10,29 +9,22 @@ import { PROFILE } from '@core/constants/portfolio.constants';
 export class PreloaderComponent implements OnInit {
   readonly visible = signal(true);
   readonly hiding = signal(false);
-  readonly progress = signal(0);
-  
+
   ngOnInit(): void {
-    this.simulateLoading();
-  }
-  
-  getInitials(): string {
-    return PROFILE.name.split(' ').map(n => n[0]).slice(0, 2).join('');
-  }
-  
-  private simulateLoading(): void {
-    let current = 0;
-    const interval = setInterval(() => {
-      current += Math.random() * 15;
-      if (current >= 100) {
-        current = 100;
-        clearInterval(interval);
-        setTimeout(() => {
-          this.hiding.set(true);
-          setTimeout(() => this.visible.set(false), 600);
-        }, 300);
-      }
-      this.progress.set(Math.floor(current));
-    }, 100);
+    if (typeof window === 'undefined') {
+      this.visible.set(false);
+      return;
+    }
+
+    const finish = (): void => {
+      this.hiding.set(true);
+      setTimeout(() => this.visible.set(false), 300);
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(finish, 200);
+    } else {
+      window.addEventListener('load', () => setTimeout(finish, 200), { once: true });
+    }
   }
 }

@@ -1,45 +1,87 @@
 <header
   class="header"
-  [class.scrolled]="scrollService.scrollY() > 50"
-  [class.hidden]="
-    scrollService.scrollY() > 300 && scrollService.scrollDirection() === 'down'
-  ">
+  [class.scrolled]="scrollService.scrollY() > 20">
   <div class="header-container">
-    <a routerLink="/" class="logo">
-      <span class="logo-mark">{{ getInitials() }}</span>
-      <span class="logo-text">{{ PROFILE.name.split(" ")[1] }}</span>
+    <a href="#home" class="logo" (click)="scrollToSection('home', $event)">
+      <svg class="logo-mark" width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 2L26 14L14 26L2 14L14 2Z" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 8L20 14L14 20L8 14L14 8Z" fill="currentColor"/>
+      </svg>
+      <span class="logo-text">Ghouse</span>
     </a>
 
     <nav class="nav-desktop">
-      @for (item of navItems; track item.label) {
+      @for (item of navItems; track item.id) {
         <a
-          [routerLink]="item.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-          class="nav-link">
+          href="#{{ item.id }}"
+          class="nav-link"
+          [class.active]="isActive(item.id)"
+          (click)="scrollToSection(item.id, $event)">
           {{ item.label }}
         </a>
       }
     </nav>
 
     <div class="header-actions">
-      <a routerLink="/contact" class="btn-hire">
-        Hire Me
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2">
-          <path d="M7 17L17 7M17 7H7M17 7V17" />
+      <a
+        [href]="'mailto:' + PROFILE.email"
+        class="header-icon-link"
+        aria-label="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 7l10 7 10-7"/>
         </svg>
+      </a>
+
+      <a
+        [href]="PROFILE.linkedin"
+        target="_blank"
+        rel="noopener"
+        class="header-icon-link"
+        aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-12h4v2"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+
+      <span class="header-divider" aria-hidden="true"></span>
+
+      <button
+        class="theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="
+          themeService.currentTheme() === 'dark'
+            ? 'Switch to light mode'
+            : 'Switch to dark mode'
+        "
+        type="button">
+        @if (themeService.currentTheme() === 'dark') {
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        } @else {
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        }
+      </button>
+
+      <a
+        href="#contact"
+        class="btn-hire"
+        (click)="scrollToSection('contact', $event)">
+        Hire Me
       </a>
 
       <button
         class="mobile-toggle"
         (click)="toggleMobile()"
-        [class.active]="mobileOpen()">
+        [class.active]="mobileOpen()"
+        type="button"
+        aria-label="Toggle menu">
         <span></span>
         <span></span>
       </button>
@@ -48,16 +90,22 @@
 
   @if (mobileOpen()) {
     <div class="mobile-nav">
-      @for (item of navItems; track item.label) {
+      @for (item of navItems; track item.id; let i = $index) {
         <a
-          [routerLink]="item.path"
-          routerLinkActive="active"
-          (click)="mobileOpen.set(false)"
-          class="mobile-link">
-          <span class="link-number">0{{ $index + 1 }}</span>
+          href="#{{ item.id }}"
+          class="mobile-link"
+          [class.active]="isActive(item.id)"
+          (click)="scrollToSection(item.id, $event)">
+          <span class="link-number">0{{ i + 1 }}</span>
           <span class="link-label">{{ item.label }}</span>
         </a>
       }
+      <button
+        class="mobile-theme-toggle"
+        (click)="toggleTheme()"
+        type="button">
+        {{ themeService.currentTheme() === 'dark' ? 'Light mode' : 'Dark mode' }}
+      </button>
     </div>
   }
 </header>
